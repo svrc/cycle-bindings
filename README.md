@@ -29,3 +29,5 @@ chmod u+x ./rebind_mysql.sh
 chmod u+x ./restart_mysql.sh 
 ./restart_mysql.sh
 ```
+
+Acknowledgements:  Hat tip to Dr. Nic's Delete all Services and bindings script which was the initial basis for this one https://github.com/cloudfoundry-community/delete-all-bindings-and-services/blob/master/bin/delete.sh
