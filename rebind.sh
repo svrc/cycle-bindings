@@ -25,7 +25,6 @@ if [[ "$(which cf)X" == "X" ]]; then
 fi
 
 service_bindings=$(cf curl /v2/service_bindings | jq -r -c .resources[])
-# TODO: replace 'in progress' with 'in-progress' before splitting as an array
 for service_binding in $service_bindings; do
         binding_guid=$(echo $service_binding | jq -r .metadata.guid)
         app_url=$(echo $service_binding | jq -r .entity.app_url)
