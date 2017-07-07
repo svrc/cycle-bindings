@@ -11,7 +11,7 @@ rebind.sh [restart|rebind] [service offering name (default all)] > my_rebind_scr
 chmod u+x ./my_rebind_script.sh
 ./my_rebind_script.sh
 ```
-Docs:
+# Usage
 - *Restart* will restart all apps that are bound to a service of a given name in the marketplace (or , default, all services)
 - *Rebind* will unbind and rebind all apps that are bound to a service of a given name in the marketplace
 
@@ -25,7 +25,7 @@ chmod u+x ./rebind_mysql.sh
 ```
 ## Restart all apps bound to p-mysql instances
 ```
-./rebind.sh rebind p-mysql > restart_mysql.sh
+./rebind.sh restart p-mysql > restart_mysql.sh
 chmod u+x ./restart_mysql.sh 
 ./restart_mysql.sh
 ```
