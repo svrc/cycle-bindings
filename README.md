@@ -15,15 +15,15 @@ Docs:
 - *Restart* will restart all apps that are bound to a service of a given name in the marketplace (or , default, all services)
 - *Rebind* will unbind and rebind all apps that are bound to a service of a given name in the marketplace
 
-Example:
+# Examples
 
-# Rebind all p-mysql instances
+## Rebind all p-mysql instances
 ```
 ./rebind.sh rebind p-mysql > rebind_mysql.sh
 chmod u+x ./rebind_mysql.sh 
 ./rebind_mysql.sh
 ```
-# Restart all apps bound to p-mysql instances
+## Restart all apps bound to p-mysql instances
 ```
 ./rebind.sh rebind p-mysql > restart_mysql.sh
 chmod u+x ./restart_mysql.sh 
