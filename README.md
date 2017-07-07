@@ -1,8 +1,9 @@
 # cycle-bindings
 Unbinds and rebinds, or restarts apps with given CF service bindings.  Useful when you need to re-IP your services.
 
-Prereqs:  the CF CLI logged in as an admin user; the jq command must also be installed
-This command does not actually execute any CF commands, it just echos them.   Redirect the output to a file and then execute it.
+Prereqs:  the **CF CLI** logged in as an admin user; the **jq** command must also be installed.
+
+**This command does not actually execute any CF commands, it just echos them to stdout.  This will allow you to track progress and debug services that don't rebind properly or apps that don't up.  Redirect the output to a file and then execute it.**
 
 How to use:
 ```
@@ -16,9 +17,15 @@ Docs:
 
 Example:
 
-Rebind all p-mysql instances
+# Rebind all p-mysql instances
+```
 ./rebind.sh rebind p-mysql > rebind_mysql.sh
 chmod u+x ./rebind_mysql.sh 
 ./rebind_mysql.sh
-
-
+```
+# Restart all apps bound to p-mysql instances
+```
+./rebind.sh rebind p-mysql > restart_mysql.sh
+chmod u+x ./restart_mysql.sh 
+./restart_mysql.sh
+```
