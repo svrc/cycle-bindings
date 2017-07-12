@@ -24,6 +24,7 @@ if [[ "$(which cf)X" == "X" ]]; then
   exit 1
 fi
 
+IFS=$'\n'
 service_instances=$(cf curl /v2/service_instances | jq -r -c .resources[])
 # TODO: replace 'in progress' with 'in-progress' before splitting as an array
 for service_instance in $service_instances; do
