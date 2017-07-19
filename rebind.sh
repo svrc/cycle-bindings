@@ -24,8 +24,15 @@ if [[ "$(which cf)X" == "X" ]]; then
   exit 1
 fi
 
+function finished {
+  exit 0
+}
+
 IFS=$'\n'
-service_instances=$(cf curl /v2/service_instances | jq -r -c .resources[])
+next_url=/v2/service_instances
+
+function scan_page {
+service_instances=$(cf curl $next_url | jq -r -c .resources[])
 # TODO: replace 'in progress' with 'in-progress' before splitting as an array
 for service_instance in $service_instances; do
   plan_url=$(echo $service_instance | jq -r .entity.service_plan_url)
@@ -63,5 +70,14 @@ for service_instance in $service_instances; do
         fi     
       done
     fi
+  fi
+done
+}
+
+while true; do
+  scan_page
+  next_url=$(cf curl $next_url | jq -r -c .next_url)
+  if [[ "${next_url}" == "null" ]]; then
+    finished
   fi
 done
