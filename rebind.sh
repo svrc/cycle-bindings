@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ($1 == "rebind") || ($1 == "restart" ) ]]
+if [[ ($1 == "rebind") || ($1 == "restart" ) || ($1 == "delete") ]]
 then
   command=$1
   echo "# $command bound services"
@@ -68,6 +68,12 @@ for service_instance in $service_instances; do
           echo "$recreation_command"
 #         eval $recreation_command
         fi     
+        if [[ ($command == "delete") ]]; then
+          echo "# Restarting app $app_name bound to service $service_instance_name in $org_name/$space_name"
+          recreation_command=("cf target -o $org_name -s $space_name; cf delete-service -f $service_instance_name")
+          echo "$recreation_command"
+#         eval $recreation_command
+        fi
       done
     fi
   fi
